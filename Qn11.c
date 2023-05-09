@@ -9,12 +9,16 @@ unsigned long long factorial(int n) {
 
 int main() {
     unsigned long long numKeys = factorial(25) / factorial(25 - 5);
+    unsigned long long numUniqueKeys = numKeys / 2;  
+    numUniqueKeys /= 2;
+    numUniqueKeys *= factorial(5); 
     int powerOf2 = 0;
-    while (numKeys > 1) {
-        numKeys /= 2;
+    while (numUniqueKeys > 1) {
+        numUniqueKeys /= 2;
         powerOf2++;
     }
-    printf("The Playfair cipher has approximately 2^%d possible keys.\n", powerOf2);
+
+    printf("The Playfair cipher has approximately 2^%d effectively unique keys.\n", powerOf2);
 
     return 0;
 }
